@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<style>
+    .nav li {
+        list-style: none;
+        margin: 20px;
+    }
+    .nav li a {
+        text-decoration: none;
+        color: black;
+        font-size: 25px;
+    }
+    .nav {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+        box-shadow: 0 0 7px rgba(0, 0, 0, 0.1) ;
+    }
+
+</style>
+<nav>
+    <ul class="nav">
+        <li>
+            <a href="#">HOME</a>
+        </li>
+        <li>
+            <a href="<%=application.getContextPath()%>/tienda/fabricantes">FABRICANTES</a>
+        </li>
+        <li>
+            <a href="<%=application.getContextPath()%>/tienda/productos">PRODUCTOS</a>
+        </li>
+        <li>
+            <a href="#">LOGIN</a>
+        </li>
+    </ul>
+</nav>
+</body>
