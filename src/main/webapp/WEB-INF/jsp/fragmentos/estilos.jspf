@@ -1,0 +1,35 @@
+body{
+overflow-x: hidden;
+}
+.nav li {
+list-style: none;
+margin: 20px;
+}
+.nav li a {
+text-decoration: none;
+color: black;
+font-size: 20px;
+}
+.nav {
+display: flex;
+flex-flow: row wrap;
+justify-content: space-around;
+box-shadow: 0 0 7px rgba(0, 0, 0, 0.1) ;
+}
+
+header {
+font-size: 35px;
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+font-weight: bold;
+display: flex;
+justify-content: center;
+margin: 10px;
+margin-bottom: 50px;
+}
+footer {
+position: absolute;
+bottom: 0;
+width: 100%;
+height: 40px;
+text-align: center;
+}

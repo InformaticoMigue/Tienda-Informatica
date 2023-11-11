@@ -13,16 +13,17 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Fabricantes</title>
-	<style>
-		.clearfix::after {
-			content: "";
-			display: block;
-			clear: both;
-		}
-
-	</style>
 </head>
 <body>
+<style>
+	.clearfix::after {
+		content: "";
+		display: block;
+		clear: both;
+	}
+	<%@ include file="/WEB-INF/jsp/fragmentos/estilos.jspf" %>
+
+</style>
 <%@ include file="/WEB-INF/jsp/fragmentos/header.jspf" %>
 <%@ include file="/WEB-INF/jsp/fragmentos/nav.jspf" %>
 
