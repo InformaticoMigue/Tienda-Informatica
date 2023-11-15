@@ -59,6 +59,7 @@ public class UsuarioDAOImpl extends AbstractDAOImpl implements UsuarioDAO {
                 u.setUsuario(rs.getString(index++));
                 u.setPassword(rs.getString(index++));
                 u.setRol(rs.getString(index++));
+                list.add(u);
             }
 
         } catch (ClassNotFoundException | SQLException e) {
@@ -81,7 +82,7 @@ public class UsuarioDAOImpl extends AbstractDAOImpl implements UsuarioDAO {
             conn = connectDB();
             ps = conn.prepareStatement("DELETE FROM usuarios WHERE idUsuario = ?");
             ps.setInt(1,pk);
-            ps.executeQuery();
+            ps.executeUpdate();
 
         } catch (ClassNotFoundException | SQLException e) {
             throw new RuntimeException(e);
@@ -93,11 +94,59 @@ public class UsuarioDAOImpl extends AbstractDAOImpl implements UsuarioDAO {
 
     @Override
     public Optional<Usuario> find(int pk) {
-        return Optional.empty();
+        Optional<Usuario> op = Optional.empty();
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        int index = 1;
+
+        try {
+            conn = connectDB();
+            ps = conn.prepareStatement("select * from usuarios where idUsuario = ?");
+            ps.setInt(1,pk);
+            rs = ps.executeQuery();
+
+            if (rs.next()) {
+                Usuario u = new Usuario();
+                u.setIdUsuario(rs.getInt(index++));
+                u.setUsuario(rs.getString(index++));
+                u.setPassword(rs.getString(index++));
+                u.setRol(rs.getString(index++));
+                op = Optional.of(u);
+            }
+
+        } catch (ClassNotFoundException | SQLException e) {
+            throw new RuntimeException(e);
+        }
+        finally {
+            closeDb(conn,ps,rs);
+        }
+
+        return op;
     }
 
     @Override
     public void update(Usuario u) {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
+        int index = 1;
+        try {
+            conn = connectDB();
+            ps = conn.prepareStatement("UPDATE usuarios SET usuario = ?, password = ?, rol = ? WHERE idUsuario = ?");
 
+            ps.setString(index++, u.getUsuario());
+            ps.setString(index++, u.getPassword());
+            ps.setString(index++, u.getRol());
+            ps.setInt(index++, u.getIdUsuario());
+
+            ps.executeUpdate();
+
+        } catch (ClassNotFoundException | SQLException e) {
+            throw new RuntimeException(e);
+        }
+        finally {
+            closeDb(conn,ps,rs);
+        }
     }
 }

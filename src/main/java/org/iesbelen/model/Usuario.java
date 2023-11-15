@@ -37,7 +37,6 @@ public class Usuario {
             throw new RuntimeException(e);
         }
     }
-
     public String getRol() {
         return rol;
     }
