@@ -25,7 +25,7 @@
         <input type="hidden" name="__method__" value="put" />
         <div class="clearfix">
             <div style="float: left; width: 50%">
-                <h1>Editar Producto</h1>
+                <h1>Editar Usuario</h1>
             </div>
             <div style="float: none;width: auto;overflow: hidden;min-height: 80px;position: relative;">
 
@@ -40,7 +40,7 @@
             <hr/>
         </div>
 
-        <% 	Optional<Usuario> optUsu = (Optional<Usuario>)request.getAttribute("usuario");
+        <% 	Optional<Usuario> optUsu = (Optional<Usuario>)request.getAttribute("usu");
             if (optUsu.isPresent()) {
         %>
 

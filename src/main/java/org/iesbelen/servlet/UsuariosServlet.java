@@ -49,17 +49,13 @@ public class UsuariosServlet extends HttpServlet {
             doDelete(req,resp);
             }else if (pathInfoSplit.length == 3 && pathInfoSplit[1].equals("editar")) {
                 UsuarioDAOImpl uDAO = new UsuarioDAOImpl();
-
                 try {
                     int id = Integer.parseInt(pathInfoSplit[2]);
-                        req.setAttribute("usuario",uDAO.find(id));
+                        req.setAttribute("usu",uDAO.find(id));
                         rd = req.getRequestDispatcher("/WEB-INF/jsp/usuarios/editar-usuario.jsp");
-
                 }catch (NumberFormatException e) {
                     rd = req.getRequestDispatcher("/WEB-INF/jsp/usuarios/usuarios.jsp");
                 }
-
-                doPut(req,resp);
             }
         }
         if (rd != null) {
@@ -84,6 +80,7 @@ public class UsuariosServlet extends HttpServlet {
                  HttpSession session = req.getSession(true);
                  session.setAttribute("usuarioLogin", real);
              }
+             resp.sendRedirect(req.getContextPath());
 
          }else {
              if (__method__ == null) {
@@ -99,7 +96,7 @@ public class UsuariosServlet extends HttpServlet {
 
              } else if (__method__.equals("delete")) {
                  doDelete(req, resp);
-             } else if (__method__.equals("put")) {
+             }else if (__method__.equals("put")) {
                  doPut(req, resp);
              }
              resp.sendRedirect(req.getContextPath() + "/tienda/usuarios");
