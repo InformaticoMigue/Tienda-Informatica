@@ -11,5 +11,6 @@ public interface UsuarioDAO {
     public void delete(int pk);
     public Optional<Usuario> find(int pk);
     public void update(Usuario u);
+    public Usuario exists(Usuario u);
 
 }

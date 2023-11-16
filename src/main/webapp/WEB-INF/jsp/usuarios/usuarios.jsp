@@ -64,7 +64,7 @@
 		<div style="margin-top: 6px;" class="clearfix">
 			<div style="float: left;width: 10%"><%= usuario.getIdUsuario()%></div>
 			<div style="float: left;width: 30%"><%= usuario.getUsuario()%></div>
-			<div style="float: left;width: 20%"><%= usuario.getPassword()%></div>
+			<div style="float: left;width: 20%"><%= usuario.getPassword().substring(0,4)%></div>
 			<div style="float: left;width: 20%"><%= usuario.getRol()%></div>
 
 			<div style="float: none;width: auto;overflow: hidden;">

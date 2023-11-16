@@ -69,4 +69,14 @@ public class Usuario {
         return hexString.toString();
 
     }
+
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "idUsuario=" + idUsuario +
+                ", usuario='" + usuario + '\'' +
+                ", password='" + password + '\'' +
+                ", rol='" + rol + '\'' +
+                '}';
+    }
 }

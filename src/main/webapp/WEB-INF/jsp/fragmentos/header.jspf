@@ -1,2 +1,9 @@
+<%@ page import="org.iesbelen.model.Usuario" %>
+<% Usuario logeado = (Usuario) request.getSession().getAttribute(("usuarioLogin"));%>
 
+<% if (logeado == null ) {%>
 <header>TIENDA INFORMATICA</header>
+<%}else {%>
+    <header>TIENDA INFORMATICA</header>
+    <input type="submit" name="logout" value="logout" />
+<%}%>

@@ -11,7 +11,7 @@
             <a href="<%=application.getContextPath()%>/tienda/productos">PRODUCTOS</a>
         </li>
         <li>
-            <a href="#">LOGIN</a>
+            <a href="<%=application.getContextPath()%>/tienda/usuarios/login">LOGIN</a>
         </li>
     </ul>
 </nav>
