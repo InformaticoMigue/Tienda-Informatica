@@ -5,5 +5,7 @@
 <header>TIENDA INFORMATICA</header>
 <%}else {%>
     <header>TIENDA INFORMATICA</header>
-    <input type="submit" name="logout" value="logout" />
+    <form action="${pageContext.request.contextPath}/tienda/usuarios/logout" method="post" >
+        <input type="submit" value="Cerrar sesion"/>
+    </form>
 <%}%>

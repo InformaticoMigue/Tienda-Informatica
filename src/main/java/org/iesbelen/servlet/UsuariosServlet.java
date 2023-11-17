@@ -82,6 +82,11 @@ public class UsuariosServlet extends HttpServlet {
              }
              resp.sendRedirect(req.getContextPath());
 
+         }
+         else if (__url__[1].equals("logout")){
+             HttpSession session= req.getSession();
+             session.invalidate();
+             resp.sendRedirect(req.getContextPath());
          }else {
              if (__method__ == null) {
                  String usuario = req.getParameter("usuario");
