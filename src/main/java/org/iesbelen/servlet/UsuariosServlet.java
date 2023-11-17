@@ -32,9 +32,11 @@ public class UsuariosServlet extends HttpServlet {
 
             if (pathInfoSplit.length == 2 && pathInfoSplit[1].equals("login")){
                 rd = req.getRequestDispatcher("/WEB-INF/jsp/usuarios/login.jsp");
+
             }else if (pathInfoSplit.length == 2 && pathInfoSplit[1].equals("crear")){
                 rd = req.getRequestDispatcher("/WEB-INF/jsp/usuarios/crear-usuario.jsp");
-            } else if (pathInfoSplit.length == 2) {
+
+            } else if (pathInfoSplit.length == 2 ) {
                 UsuarioDAOImpl uDAO = new UsuarioDAOImpl();
 
                 try {
@@ -45,17 +47,20 @@ public class UsuariosServlet extends HttpServlet {
                 } catch (NumberFormatException e) {
                     rd = req.getRequestDispatcher("/WEB-INF/jsp/usuarios/usuarios.jsp");
                 }
-            }else if (pathInfoSplit.length == 3 && pathInfoSplit[1].equals("borrar")) {
-            doDelete(req,resp);
+
             }else if (pathInfoSplit.length == 3 && pathInfoSplit[1].equals("editar")) {
                 UsuarioDAOImpl uDAO = new UsuarioDAOImpl();
+
                 try {
                     int id = Integer.parseInt(pathInfoSplit[2]);
-                        req.setAttribute("usu",uDAO.find(id));
-                        rd = req.getRequestDispatcher("/WEB-INF/jsp/usuarios/editar-usuario.jsp");
+                    req.setAttribute("usu",uDAO.find(id));
+                    rd = req.getRequestDispatcher("/WEB-INF/jsp/usuarios/editar-usuario.jsp");
+
                 }catch (NumberFormatException e) {
                     rd = req.getRequestDispatcher("/WEB-INF/jsp/usuarios/usuarios.jsp");
                 }
+            }else if (pathInfoSplit.length == 3 && pathInfoSplit[1].equals("borrar")) {
+                 doDelete(req,resp);
             }
         }
         if (rd != null) {
@@ -82,8 +87,7 @@ public class UsuariosServlet extends HttpServlet {
              }
              resp.sendRedirect(req.getContextPath());
 
-         }
-         else if (__url__[1].equals("logout")){
+         }else if (__url__[1].equals("logout")){
              HttpSession session= req.getSession();
              session.invalidate();
              resp.sendRedirect(req.getContextPath());
@@ -93,13 +97,15 @@ public class UsuariosServlet extends HttpServlet {
                  String password = req.getParameter("contrasena");
                  String rol = req.getParameter("rol");
 
-                 Usuario u = new Usuario();
-                 u.setUsuario(usuario);
-                 u.setPassword(password);
-                 u.setRol(rol);
-                 us.create(u);
+                 if (!usuario.isEmpty() && !password.isEmpty()) {
+                     Usuario u = new Usuario();
+                     u.setUsuario(usuario);
+                     u.setPassword(password);
+                     u.setRol(rol);
+                     us.create(u);
+                 }
 
-             } else if (__method__.equals("delete")) {
+             }else if (__method__.equals("delete")) {
                  doDelete(req, resp);
              }else if (__method__.equals("put")) {
                  doPut(req, resp);

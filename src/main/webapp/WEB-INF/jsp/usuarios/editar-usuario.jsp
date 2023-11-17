@@ -63,7 +63,7 @@
                 <label>Contraseña</label>
             </div>
             <div style="float: none;width: auto;overflow: hidden;">
-                <input name="password" value="<%= optUsu.get().getPassword() %>"/>
+                <input name="password" value="<%= optUsu.get().getPassword().substring(0,4)%>"/>
             </div>
             <div style="float: none;width: auto;overflow: hidden;">
                 <select name="rol">
