@@ -20,7 +20,7 @@
 <%@ include file="/WEB-INF/jsp/fragmentos/nav.jspf" %>
 
 <div class="form-group w-25 m-0 m-auto shadow-lg p-3 mb-5 bg-white rounded mt-5 ">
-    <form action="${pageContext.request.contextPath}/tienda/usuarios/login" method="post">
+    <form action="${pageContext.request.contextPath}/tienda/login" method="post">
 
         <h3 class="pb-3 ">FORMULARIO</h3>
         <label>Username</label>

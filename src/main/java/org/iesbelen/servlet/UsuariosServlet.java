@@ -30,10 +30,7 @@ public class UsuariosServlet extends HttpServlet {
         }else{
             String[] pathInfoSplit = pathInfo.split("/");
 
-            if (pathInfoSplit.length == 2 && pathInfoSplit[1].equals("login")){
-                rd = req.getRequestDispatcher("/WEB-INF/jsp/usuarios/login.jsp");
-
-            }else if (pathInfoSplit.length == 2 && pathInfoSplit[1].equals("crear")){
+            if (pathInfoSplit.length == 2 && pathInfoSplit[1].equals("crear")){
                 rd = req.getRequestDispatcher("/WEB-INF/jsp/usuarios/crear-usuario.jsp");
 
             } else if (pathInfoSplit.length == 2 ) {
@@ -72,26 +69,8 @@ public class UsuariosServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String __method__ = req.getParameter("__method__");
         UsuarioDAOImpl us = new UsuarioDAOImpl();
-        String[] __url__ = req.getPathInfo().split("/");
 
-         if (__url__[1].equals("login")){
-             Usuario auxUser = new Usuario();
-             auxUser.setUsuario(req.getParameter("username"));
-             auxUser.setPassword(req.getParameter("password"));
 
-             Usuario real = us.exists(auxUser);
-
-             if (real != null) {
-                 HttpSession session = req.getSession(true);
-                 session.setAttribute("usuarioLogin", real);
-             }
-             resp.sendRedirect(req.getContextPath());
-
-         }else if (__url__[1].equals("logout")){
-             HttpSession session= req.getSession();
-             session.invalidate();
-             resp.sendRedirect(req.getContextPath());
-         }else {
              if (__method__ == null) {
                  String usuario = req.getParameter("usuario");
                  String password = req.getParameter("contrasena");
@@ -111,8 +90,7 @@ public class UsuariosServlet extends HttpServlet {
                  doPut(req, resp);
              }
              resp.sendRedirect(req.getContextPath() + "/tienda/usuarios");
-         }
-    }
+        }
 
     @Override
     protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

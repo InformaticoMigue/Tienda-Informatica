@@ -44,6 +44,8 @@ public class Usuario {
     public void setRol(String rol) {
         this.rol = rol;
     }
+
+
     public static String hashPassword(String password ) throws NoSuchAlgorithmException {
         MessageDigest digest;
 
