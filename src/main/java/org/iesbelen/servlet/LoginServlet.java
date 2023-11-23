@@ -29,8 +29,6 @@ public class LoginServlet extends HttpServlet {
         String __url__ = req.getPathInfo();
         UsuarioDAOImpl us = new UsuarioDAOImpl();
 
-
-
         if (__url__ == null){
             Usuario auxUser = new Usuario();
             auxUser.setUsuario(req.getParameter("username"));
